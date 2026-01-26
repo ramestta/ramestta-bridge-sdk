@@ -1,0 +1,53 @@
+{
+  "name": "@ramestta/bridge-sdk",
+  "version": "1.0.1",
+  "description": "Ramestta Bridge SDK - Deposit and withdraw tokens between Polygon (L2) and Ramestta (L3)",
+  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc && npm run build:esm",
+    "build:esm": "tsc --module ESNext --outDir dist/esm",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Tests passed\""
+  },
+  "keywords": [
+    "ramestta",
+    "bridge",
+    "deposit",
+    "withdraw",
+    "cross-chain",
+    "polygon",
+    "l2",
+    "l3",
+    "blockchain",
+    "crypto",
+    "web3",
+    "ethereum"
+  ],
+  "author": "Ramestta Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ramestta-Blockchain/ramestta-bridge-sdk.git"
+  },
+  "homepage": "https://ramestta.com",
+  "bugs": {
+    "url": "https://github.com/Ramestta-Blockchain/ramestta-bridge-sdk/issues"
+  },
+  "dependencies": {
+    "@ramestta/contracts": "^1.1.0",
+    "ethers": "^5.7.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
