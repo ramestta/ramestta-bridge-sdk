@@ -75,7 +75,7 @@ const burnTx = await bridge.startWithdraw(
 await burnTx.wait();
 console.log('Burn initiated:', burnTx.hash);
 
-// 2. Wait for checkpoint (~30 min)
+// 2. Wait for checkpoint (~10 min)
 const isCheckpointed = await bridge.waitForCheckpoint(burnTx.blockNumber);
 
 // 3. Process exit on Polygon (after checkpoint)
@@ -193,7 +193,7 @@ isValidAddress(address: string): boolean
 ```
 ┌─────────────┐     ┌──────────────┐     ┌─────────────┐
 │  Ramestta   │────▶│  Checkpoint  │────▶│   Polygon   │
-│    (L3)     │     │   (30 min)   │     │    (L2)     │
+│    (L3)     │     │  (~10 min)   │     │    (L2)     │
 └─────────────┘     └──────────────┘     └─────────────┘
      │                     │                    │
      │  1. Burn            │  2. Wait for       │  3. Exit
@@ -203,7 +203,7 @@ isValidAddress(address: string): boolean
   (Token Burn)        (Verify Proof)       Manager
 ```
 
-**Time:** ~30-45 minutes
+**Time:** ~1.5 hours after checkpoint plus the 4800 second exit window
 
 ## Example: Full Bridge Flow
 
@@ -260,14 +260,14 @@ async function bridgeExample() {
 | DepositManager | `0x81ebFB0c73d3165c4719E9604cDa55eF91226dAf` |
 | WithdrawManager | `0x6e07F852bAC263492e8C710dB7c0d59275268db8` |
 | StateSender | `0xE0C9051E655380D1d880b9B0f4b500cEbD09278f` |
-| ERC20Predicate | `0xC0dA09523c92714d0Df17e72966B3B80f228df8e` |
+| ERC20Predicate | `0xEc65755B726405e30a869ABd7EE5E66350dE682c` |
 | RamaToken | `0x55a5CC06801bBa4C030568f1A7ee1c753FDcbe36` |
 
 ### Ramestta (L3)
 
 | Contract | Address |
 |----------|---------|
-| ChildChain | `0x0000000000000000000000000000000000001001` |
+| ChildChain | `0xfE9abcBF139636208efbaf9214E79c4932491303` |
 | MRC20 | `0x0000000000000000000000000000000000001010` |
 
 ## Networks

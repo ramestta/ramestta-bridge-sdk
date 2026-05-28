@@ -85,7 +85,7 @@ export interface CheckpointInfo {
   end: BigNumber;
   root: string;
   proposer: string;
-  createdAt: number;
+  createdAt: BigNumber;
 }
 
 // ============================================================
@@ -185,11 +185,11 @@ export class BridgeClient {
       
       return {
         headerNumber,
-        start: header.start || header[0],
-        end: header.end || header[1],
-        root: header.root || header[2],
-        proposer: header.proposer || header[3],
-        createdAt: (header.createdAt || header[4] || 0).toString(),
+        root: header.root || header[0],
+        start: header.start || header[1],
+        end: header.end || header[2],
+        createdAt: header.createdAt || header[3],
+        proposer: header.proposer || header[4],
       };
     } catch {
       return null;
@@ -468,7 +468,7 @@ export class BridgeClient {
    */
   async waitForCheckpoint(
     blockNumber: number,
-    maxWaitMs: number = 30 * 60 * 1000 // 30 minutes default
+    maxWaitMs: number = 10 * 60 * 1000 // 10 minutes default
   ): Promise<boolean> {
     const startTime = Date.now();
     
@@ -618,7 +618,7 @@ export function estimateBridgeTime(direction: 'deposit' | 'withdraw'): string {
   if (direction === 'deposit') {
     return '5-10 minutes (after state sync)';
   } else {
-    return '30-45 minutes (after checkpoint + challenge period)';
+    return '~1.5 hours (after checkpoint + 4800 second exit window)';
   }
 }
 

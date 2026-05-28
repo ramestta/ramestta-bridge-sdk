@@ -46,11 +46,11 @@ export class BridgeClient {
             const header = await this.rootChain.headerBlocks(headerNumber);
             return {
                 headerNumber,
-                start: header.start || header[0],
-                end: header.end || header[1],
-                root: header.root || header[2],
-                proposer: header.proposer || header[3],
-                createdAt: (header.createdAt || header[4] || 0).toString(),
+                root: header.root || header[0],
+                start: header.start || header[1],
+                end: header.end || header[2],
+                createdAt: header.createdAt || header[3],
+                proposer: header.proposer || header[4],
             };
         }
         catch {
@@ -270,7 +270,7 @@ export class BridgeClient {
     /**
      * Wait for checkpoint inclusion
      */
-    async waitForCheckpoint(blockNumber, maxWaitMs = 30 * 60 * 1000 // 30 minutes default
+    async waitForCheckpoint(blockNumber, maxWaitMs = 10 * 60 * 1000 // 10 minutes default
     ) {
         const startTime = Date.now();
         while (Date.now() - startTime < maxWaitMs) {
@@ -392,7 +392,7 @@ export function estimateBridgeTime(direction) {
         return '5-10 minutes (after state sync)';
     }
     else {
-        return '30-45 minutes (after checkpoint + challenge period)';
+        return '~1.5 hours (after checkpoint + 4800 second exit window)';
     }
 }
 /**

@@ -53,7 +53,7 @@ export interface CheckpointInfo {
     end: BigNumber;
     root: string;
     proposer: string;
-    createdAt: number;
+    createdAt: BigNumber;
 }
 export declare class BridgeClient {
     private polygonProvider;
@@ -166,12 +166,12 @@ export declare class BridgeClient {
             depositManager: "0x81ebFB0c73d3165c4719E9604cDa55eF91226dAf";
             withdrawManager: "0x6e07F852bAC263492e8C710dB7c0d59275268db8";
             stateSender: "0xE0C9051E655380D1d880b9B0f4b500cEbD09278f";
-            erc20Predicate: "0xC0dA09523c92714d0Df17e72966B3B80f228df8e";
+            erc20Predicate: "0xEc65755B726405e30a869ABd7EE5E66350dE682c";
             erc721Predicate: "0x02F08C48DaB9739C49A1F6C681B32fEFeCa9F1A9";
             ramaToken: "0x55a5CC06801bBa4C030568f1A7ee1c753FDcbe36";
         };
         ramestta: {
-            childChain: "0x0000000000000000000000000000000000001001";
+            childChain: "0xfE9abcBF139636208efbaf9214E79c4932491303";
             mrc20: "0x0000000000000000000000000000000000001010";
         };
     };
@@ -185,8 +185,8 @@ export declare class BridgeClient {
             readonly rpcUrl: "https://polygon-rpc.com";
             readonly explorer: "https://polygonscan.com";
             readonly nativeCurrency: {
-                readonly name: "MATIC";
-                readonly symbol: "MATIC";
+                readonly name: "POL";
+                readonly symbol: "POL";
                 readonly decimals: 18;
             };
         };
