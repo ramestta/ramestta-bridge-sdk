@@ -1,6 +1,6 @@
 {
   "name": "@ramestta/bridge-sdk",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Ramestta Bridge SDK - Deposit and withdraw tokens between Polygon (L2) and Ramestta (L3)",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
